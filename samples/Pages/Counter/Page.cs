@@ -9,10 +9,10 @@ public partial class CounterPage : Page<CounterState, Dictionary<string, dynamic
         initState: initState,
         effect: buildEffect(),
         reducer: buildReducer(),
-        middlewares: new[]
-        {
+        middlewares:
+        [
             Redux.Middlewares.logMiddleware<CounterState>(monitor: (state) => state.ToString(), tag: "CounterPage")
-        },
+        ],
         view: (state, dispatch, _) =>
         {
             var image = new Image()
@@ -27,14 +27,23 @@ public partial class CounterPage : Page<CounterState, Dictionary<string, dynamic
             {
                 Text = "Hello, World!",
             };
+
             headline.SetValue(SemanticProperties.HeadingLevelProperty, SemanticHeadingLevel.Level1);
+            if (App.Current!.Resources.TryGetValue("Headline", out object HeadlineStyle))
+            {
+                headline.Style = HeadlineStyle as Style;
+            }
 
             var subHeadline = new Label()
             {
-                Text = "Welcome to &#10;.NET Multi-platform App UI",
+                Text = "Welcome to \r\n .NET Multi-platform App UI",
             };
             subHeadline.SetValue(SemanticProperties.HeadingLevelProperty, SemanticHeadingLevel.Level2);
             subHeadline.SetValue(SemanticProperties.DescriptionProperty, "Welcome to dot net Multi platform App UI");
+            if (App.Current!.Resources.TryGetValue("Headline", out object SubHeadlineStyle))
+            {
+                subHeadline.Style = SubHeadlineStyle as Style;
+            }
 
             var clickButton = new Button()
             {
@@ -60,7 +69,7 @@ public partial class CounterPage : Page<CounterState, Dictionary<string, dynamic
                     {
                         Padding = new Thickness(30, 0),
                         Spacing = 25,
-                        Children = 
+                        Children =
                         {
                             image, headline, subHeadline, clickButton
                         }
@@ -70,5 +79,5 @@ public partial class CounterPage : Page<CounterState, Dictionary<string, dynamic
         })
     { }
 
-    private static CounterState initState(Dictionary<string, dynamic>? param) => new CounterState() { Count = 0 };
+    private static CounterState initState(Dictionary<string, dynamic>? param) => new() { Count = 0 };
 }
