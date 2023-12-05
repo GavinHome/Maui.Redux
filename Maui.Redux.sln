@@ -23,7 +23,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "samples", "samples\samples.csproj", "{3071840B-F687-46A3-98C4-EAD20A46393E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "component", "lib\src\component\component.csproj", "{5C084E09-96F0-4F0A-A2EA-042403F4C418}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "component", "lib\src\component\component.csproj", "{5C084E09-96F0-4F0A-A2EA-042403F4C418}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C171C78A-77EF-48F5-A1DD-760E9A0CB914}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -167,7 +167,7 @@ public class Dependencies<T>
 
     public Reducer<T> createReducer()
     {
-        List<SubReducer<T>> subs = new List<SubReducer<T>>();
+        List<SubReducer<T>> subs = [];
         if (slots != null && slots.Any())
         {
             subs.AddRange(slots.Values.Select(entry => entry.createSubReducer()).ToList());
@@ -218,26 +218,25 @@ public enum Lifecycle
 
 static class LifecycleCreator
 {
-    public static Action initState() => new Action(Lifecycle.initState);
+    public static Action initState() => new(Lifecycle.initState);
 
-    public static Action build(string name) => new Action(Lifecycle.build, payload: name);
+    public static Action build(string name) => new (Lifecycle.build, payload: name);
 
-    public static Action reassemble() => new Action(Lifecycle.reassemble);
+    public static Action reassemble() => new(Lifecycle.reassemble);
 
-    public static Action dispose() => new Action(Lifecycle.dispose);
+    public static Action dispose() => new(Lifecycle.dispose);
 
     // static Action didDisposed() => const Action(Lifecycle.didDisposed);
 
-    public static Action didUpdateWidget() => new Action(Lifecycle.didUpdateWidget);
+    public static Action didUpdateWidget() => new(Lifecycle.didUpdateWidget);
 
-    public static Action didChangeDependencies() => new Action(Lifecycle.didChangeDependencies);
+    public static Action didChangeDependencies() => new(Lifecycle.didChangeDependencies);
 
-    public static Action deactivate() => new Action(Lifecycle.deactivate);
+    public static Action deactivate() => new(Lifecycle.deactivate);
 
-    public static Action appear(int index) => new Action(Lifecycle.appear, payload: index);
+    public static Action appear(int index) => new(Lifecycle.appear, payload: index);
 
-    public static Action disappear(int index) =>
-        new Action(Lifecycle.disappear, payload: index);
+    public static Action disappear(int index) => new(Lifecycle.disappear, payload: index);
 }
 
 /// [ComponentContext]
@@ -413,7 +412,7 @@ public delegate Task SubEffect<T>(Action action, ComponentContext<T> ctx);
 
 public static class EffectConverter
 {
-    static readonly object SubEffectReturnNull = new object();
+    static readonly object SubEffectReturnNull = new();
 
     /// [combineEffects]
     /// for action.type which override it's == operator
@@ -550,7 +549,7 @@ public class BasicAdapter<T> : ComposedComponent<T>
               Log.doPrint($"{GetType()} do reload");
           });
         List<Dependent<T>> dependentArray = builder(getter());
-        List<Widget> widgets = new List<Widget>();
+        List<Widget> widgets = [];
         foreach (var dependent in dependentArray)
         {
             widgets.AddRange(
