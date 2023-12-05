@@ -21,7 +21,7 @@ public class FuncValueConverter<TIn, TOut> : IValueConverter
     {
         _convert = convert;
     }
-
+     
     /// <inheritdoc/>
     public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {

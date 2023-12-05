@@ -20,7 +20,7 @@ public abstract class Component<T> : BasicComponent<T> //where T : class, new()
 
     public override List<Widget> buildComponents(Store<object> store, Get<T> getter)
     {
-        return new List<Widget> { buildComponent(store, getter) };
+        return [buildComponent(store, getter)];
     }
 }
 
