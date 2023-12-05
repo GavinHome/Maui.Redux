@@ -168,7 +168,7 @@ public delegate T SubReducer<T>(T state, Action action, bool isStateCopied);
 public static class ReducerConverter
 {
     /// [asReducer]
-    /// combine & as
+    /// combine and as
     /// for action.type which override it's == operator
     public static Reducer<T> AsReducers<T>(Dictionary<object, Reducer<T>>? map)
     {
