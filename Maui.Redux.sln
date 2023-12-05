@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{67FEA419-8FED-4F7F-93AF-D5C676524C36}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E34A7FD3-1F05-43AF-BCF8-E52BC574D1B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "redux", "lib\src\redux\redux.csproj", "{327FEEAC-D44D-4207-938B-F1AA6B36AF2D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "component", "lib\src\component\component.csproj", "{345DD246-D367-43D1-BD41-DDC38225031B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{6B97E2B3-EC9E-4F90-958C-1B842A5DEEC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "samples", "samples\samples.csproj", "{1DEC705D-C7BA-4924-A807-5FA99372CA8E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8F9F5E53-A6CC-4631-8406-F93EC74EE4AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.Redux.Test", "test\Maui.Redux.Test\Maui.Redux.Test.csproj", "{E48C0CD9-ACD5-45B0-9354-B10D7CCD6AE6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{327FEEAC-D44D-4207-938B-F1AA6B36AF2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{327FEEAC-D44D-4207-938B-F1AA6B36AF2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{327FEEAC-D44D-4207-938B-F1AA6B36AF2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{327FEEAC-D44D-4207-938B-F1AA6B36AF2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{345DD246-D367-43D1-BD41-DDC38225031B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{345DD246-D367-43D1-BD41-DDC38225031B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{345DD246-D367-43D1-BD41-DDC38225031B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{345DD246-D367-43D1-BD41-DDC38225031B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DEC705D-C7BA-4924-A807-5FA99372CA8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DEC705D-C7BA-4924-A807-5FA99372CA8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DEC705D-C7BA-4924-A807-5FA99372CA8E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1DEC705D-C7BA-4924-A807-5FA99372CA8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DEC705D-C7BA-4924-A807-5FA99372CA8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DEC705D-C7BA-4924-A807-5FA99372CA8E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E48C0CD9-ACD5-45B0-9354-B10D7CCD6AE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E48C0CD9-ACD5-45B0-9354-B10D7CCD6AE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E48C0CD9-ACD5-45B0-9354-B10D7CCD6AE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E48C0CD9-ACD5-45B0-9354-B10D7CCD6AE6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E34A7FD3-1F05-43AF-BCF8-E52BC574D1B5} = {67FEA419-8FED-4F7F-93AF-D5C676524C36}
+		{327FEEAC-D44D-4207-938B-F1AA6B36AF2D} = {E34A7FD3-1F05-43AF-BCF8-E52BC574D1B5}
+		{345DD246-D367-43D1-BD41-DDC38225031B} = {E34A7FD3-1F05-43AF-BCF8-E52BC574D1B5}
+		{1DEC705D-C7BA-4924-A807-5FA99372CA8E} = {6B97E2B3-EC9E-4F90-958C-1B842A5DEEC3}
+		{E48C0CD9-ACD5-45B0-9354-B10D7CCD6AE6} = {8F9F5E53-A6CC-4631-8406-F93EC74EE4AC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B6736B1C-09C6-4F73-AE58-2F0A21D986E1}
+	EndGlobalSection
+EndGlobal
