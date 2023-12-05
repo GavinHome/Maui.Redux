@@ -57,9 +57,28 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Pages\Todos\**" />
+	  <Compile Remove="Pages\Todos\**" />
+	  <EmbeddedResource Remove="Pages\Todos\**" />
+	  <MauiCss Remove="Pages\Todos\**" />
+	  <MauiXaml Remove="Pages\Todos\**" />
+	  <None Remove="Pages\Todos\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Pages\Counter\MainPage.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="ReactiveUI.Fody" Version="19.5.1" />
+		<PackageReference Include="ReactiveUI.Maui" Version="19.5.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\lib\src\component\component.csproj" />
 	</ItemGroup>
 
 </Project>
