@@ -1,7 +1,5 @@
 ﻿using Converters;
-using Microsoft.Maui.Controls;
 using ReactiveUI;
-using System;
 
 namespace samples.Pages.Counter;
 
@@ -24,6 +22,7 @@ public partial class CounterPage : Page<CounterState, Dictionary<string, dynamic
                 Aspect = Aspect.AspectFit
             };
             image.SetValue(SemanticProperties.DescriptionProperty, "dot net bot in a race car number eight");
+
             var headline = new Label()
             {
                 Text = "Hello, World!",
@@ -45,9 +44,9 @@ public partial class CounterPage : Page<CounterState, Dictionary<string, dynamic
             };
             clickButton.SetValue(SemanticProperties.HintProperty, "Counts the number of times you click");
             clickButton.SetBinding(
-                Button.TextProperty, 
+                Button.TextProperty,
                 new Binding(
-                    path: "Count",
+                    path: nameof(state.Count),
                     source: state,
                     converter: new FuncValueConverter<int, string>(count => count == 0 ? "Click me" : ($"Clicked {count} time" + (count > 1 ? "s" : string.Empty)))
                 )
@@ -61,34 +60,10 @@ public partial class CounterPage : Page<CounterState, Dictionary<string, dynamic
                     {
                         Padding = new Thickness(30, 0),
                         Spacing = 25,
-                        Children = {
+                        Children = 
+                        {
                             image, headline, subHeadline, clickButton
                         }
-                        //Children =
-                        //{
-                        //    //new Image()
-                        //    //{
-                        //    //    Source = ImageSource.FromFile("dotnet_bot.png"),
-                        //    //    HeightRequest = 185,
-                        //    //    Aspect =  Aspect.AspectFit
-                        //    //},
-                        //    //new Label()
-                        //    //{
-                        //    //    Text = "Hello, World!",                                
-                        //    //    //Style = App.Current?.Resources["Headline"] as Style
-                        //    //},
-                        //    //new Label()
-                        //    //{
-                        //    //    Text = "Welcome to &#10;.NET Multi-platform App UI"
-                        //    //},
-                        //    //new Button()
-                        //    //{
-                        //    //    //Text = "Click me",
-
-                        //    //    Command = ReactiveCommand.Create(() => dispatch(CounterActionCreator.onAddAction())),
-                        //    //    HorizontalOptions = LayoutOptions.Fill
-                        //    //}
-                        //}
                     }
                 }
             };
