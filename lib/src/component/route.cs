@@ -35,7 +35,7 @@ public class PageRoutes : AbstractRoutes
     private Widget buildHome(string? path, dynamic arguments)
     {
         var content = pages[path!].buildPage(arguments);
-        Navigator.of().push(new Route<dynamic>(new RouteSettings(path, arguments), content, null));
+        ////Navigator.of().push(new Route<dynamic>(new RouteSettings(path, arguments), content, null));
         return content;
     }
 }
