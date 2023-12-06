@@ -41,7 +41,8 @@ public partial class CounterPage : Page<CounterState, Dictionary<string, dynamic
                 subHeadline.Style = SubHeadlineStyle as Style;
             }
 
-            var clickButton = new Button()            {
+            var clickButton = new Button()
+            {
                 Text = "Click me",
                 Command = ReactiveUI.ReactiveCommand.Create(() => dispatch(CounterActionCreator.onAddAction())),
                 HorizontalOptions = LayoutOptions.Fill
@@ -56,6 +57,16 @@ public partial class CounterPage : Page<CounterState, Dictionary<string, dynamic
                 )
             );
 
+            //var flag = AppShell.Current == null || AppShell.Current?.CurrentState.Location.AbsolutePath == "Counter";
+            var title = string.IsNullOrEmpty(state.Title);
+            var toDosButton = new Button()
+            {
+                Text = title ? "Counter2" : "Back",
+                Command = ReactiveUI.ReactiveCommand.Create(() => AppShell.Current?.GoToAsync(title ? "//Counter2" : "//Counter")),
+                HorizontalOptions = LayoutOptions.Fill
+            };
+            toDosButton.SetValue(SemanticProperties.HintProperty, title ? "Go to ToDosPage" : "Back to CounterPage");
+
             return new ContentPage()
             {
                 Content = new ScrollView()
@@ -66,7 +77,7 @@ public partial class CounterPage : Page<CounterState, Dictionary<string, dynamic
                         Spacing = 25,
                         Children =
                         {
-                            image, headline, subHeadline, clickButton
+                            image, headline, subHeadline, clickButton, toDosButton
                         }
                     }
                 }
@@ -74,5 +85,5 @@ public partial class CounterPage : Page<CounterState, Dictionary<string, dynamic
         })
     { }
 
-    private static CounterState initState(Dictionary<string, dynamic>? param) => new() { Count = 0 };
+    private static CounterState initState(Dictionary<string, dynamic>? param) => new() { Count = param?.GetValueOrDefault("count") ?? 0, Title = param?.GetValueOrDefault("title") ?? string.Empty };
 }
