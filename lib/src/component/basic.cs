@@ -57,7 +57,8 @@ public abstract class StatefulWidget : Widget
 /// [VoidCallback]
 public delegate dynamic? VoidCallback();
 
-/// [State<T>]
+/// [State]
+/// Definition of the state class.
 public abstract class State<T> where T : StatefulWidget
 {
     public T widget => _widget!;
@@ -563,14 +564,8 @@ public static class ObjectCopier
     /// <param name="source">The object instance to copy.</param>
     /// <returns>The copied object.</returns>
     /// <exception cref="ArgumentException"></exception>
-    public static T Clone<T>(this T source)
+    public static T? Clone<T>(this T source)
     {
-        if (!typeof(T).IsSerializable)
-        {
-            throw new ArgumentException("The type must be serializable.", nameof(source));
-        }
-
-#pragma warning disable CS8603 // 可能返回 null 引用。
         // Don't serialize a null object, simply return the default for that object
         if (source is null) //if (ReferenceEquals(source, null))
         {
@@ -579,6 +574,5 @@ public static class ObjectCopier
 
         var stream = System.Text.Json.JsonSerializer.Serialize<T>(source);
         return System.Text.Json.JsonSerializer.Deserialize<T>(stream);
-#pragma warning restore CS8603 // 可能返回 null 引用。
     }
 }
