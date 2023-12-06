@@ -18,24 +18,9 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
-	<ItemGroup>
-	  <AndroidResource Remove="component\**" />
-	  <AndroidResource Remove="redux\**" />
-	  <Compile Remove="component\**" />
-	  <Compile Remove="redux\**" />
-	  <EmbeddedResource Remove="component\**" />
-	  <EmbeddedResource Remove="redux\**" />
-	  <MauiCss Remove="component\**" />
-	  <MauiCss Remove="redux\**" />
-	  <MauiXaml Remove="component\**" />
-	  <MauiXaml Remove="redux\**" />
-	  <None Remove="component\**" />
-	  <None Remove="redux\**" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Remove="navigator.cs" />
-	</ItemGroup>
+  <ItemGroup>
+    <Compile Remove="navigator.cs" />
+  </ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
