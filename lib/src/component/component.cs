@@ -41,14 +41,14 @@ public class _ComponentWidget<T> : StatefulWidget
     ////    return (new _ComponentState<_ComponentWidget<T>>() as State<StatefulWidget>)!;
     ////}
 
-    public override State createState() => new _ComponentState<T>();
+    public override _ComponentState<T> createState() => new();
 
     public BasicComponent<T> Component => component;
     public Store<object> Store => store;
     public Get<T> GetGetter => getter;
 }
 
-public class _ComponentState<T> : State //: State<_ComponentWidget<T>>
+public class _ComponentState<T> : State<StatefulWidget>
 {
     ComponentContext<T>? _ctx;
     BasicComponent<T> component => widget.Component;

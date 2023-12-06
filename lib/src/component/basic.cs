@@ -1,6 +1,6 @@
 namespace Redux.Component;
 
-public abstract class ComponentElement //: ContentView
+public abstract class ComponentElement
 {
     public abstract Widget build();
 }
@@ -10,7 +10,7 @@ public class StatefulElement : ComponentElement
     public StatefulElement(StatefulWidget widget)
     {
         _state = widget.createState();
-        //state._element = this;
+        ////state._element = this;
         state._widget = widget;
         _state.initState();
     }
@@ -19,58 +19,52 @@ public class StatefulElement : ComponentElement
 
     State<StatefulWidget> state => _state!;
     readonly State<StatefulWidget>? _state;
-    private bool _dirty;
-    private bool dirty => _dirty;
 
-    internal void markNeedsBuild()
-    {
-        if (dirty)
-        {
-            return;
-        }
+    #region 
+    ////private bool _dirty;
+    ////private bool dirty => _dirty;
 
-        _dirty = true;
-        ////state.build(this);
-        rebuild();
-    }
+    ////internal void markNeedsBuild()
+    ////{
+    ////    if (dirty)
+    ////    {
+    ////        return;
+    ////    }
 
-    void rebuild(bool force = false)
-    {
-        if ((!_dirty && !force))
-        {
-            return;
-        }
+    ////    _dirty = true;
+    ////    ////state.build(this);
+    ////    rebuild();
+    ////}
 
-        _dirty = false;
-    }
+    ////void rebuild(bool force = false)
+    ////{
+    ////    if ((!_dirty && !force))
+    ////    {
+    ////        return;
+    ////    }
+
+    ////    _dirty = false;
+    ////}
+    #endregion
 }
 
-public interface WidgetBuilder
+public abstract class StatefulWidget : Widget
 {
-    public Widget create();
-}
-
-public abstract class StatefulWidget : Widget, WidgetBuilder
-{
-    ////public abstract State<StatefulWidget> createState();
-    public abstract State createState();
+    public abstract State<StatefulWidget> createState();
     public Widget create() => new StatefulElement(this).build();
 }
 
-public abstract class State : State<StatefulWidget>
-{
-}
-
+/// [VoidCallback]
 public delegate dynamic? VoidCallback();
 
+/// [State<T>]
 public abstract class State<T> where T : StatefulWidget
 {
     public T widget => _widget!;
     public T? _widget;
 
-    // public Widget? _element;
-    //
-    // public bool mounted => _element != null;
+    ////public Widget? _element;
+    ////public bool mounted => _element != null;
 
     public virtual void initState() { }
 
@@ -89,9 +83,9 @@ public abstract class State<T> where T : StatefulWidget
     protected virtual void dispose() { }
 
     public void setState(VoidCallback fn)
-    {    
+    {
         object? _ = fn();
-        //_element!.markNeedsBuild();
+        ////_element!.markNeedsBuild();
     }
 }
 
@@ -216,7 +210,7 @@ static class LifecycleCreator
 {
     public static Action initState() => new(Lifecycle.initState);
 
-    public static Action build(string name) => new (Lifecycle.build, payload: name);
+    public static Action build(string name) => new(Lifecycle.build, payload: name);
 
     public static Action reassemble() => new(Lifecycle.reassemble);
 
@@ -404,8 +398,10 @@ public delegate dynamic ViewBuilder<T>(T state, Dispatch dispatch, ComponentCont
 /// According to the return value, determine whether the Action event is consumed.
 public delegate dynamic? Effect<T>(Action action, ComponentContext<T> ctx);
 
+/// [SubEffect]
 public delegate Task SubEffect<T>(Action action, ComponentContext<T> ctx);
 
+/// [EffectConverter]
 public static class EffectConverter
 {
     static readonly object SubEffectReturnNull = new();
@@ -557,6 +553,7 @@ public class BasicAdapter<T> : ComposedComponent<T>
     }
 }
 
+/// [ObjectCopier]
 public static class ObjectCopier
 {
     /// <summary>
