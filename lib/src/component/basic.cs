@@ -1,5 +1,4 @@
 using System.Text.Json;
-using Microsoft.Maui.Controls;
 namespace Redux.Component;
 
 using Widget = ContentPage;
@@ -94,7 +93,7 @@ public abstract class State<T> where T : StatefulWidget
 
     public void setState(VoidCallback fn)
     {    
-        object? result = fn();
+        object? _ = fn();
         //_element!.markNeedsBuild();
     }
 }
@@ -380,7 +379,7 @@ public class ComponentContext<T>
     }
 
     Dispatch _createDispatch(
-            Dispatch onEffect, Dispatch next, ComponentContext<T> ctx) =>
+            Dispatch onEffect, Dispatch next, ComponentContext<T> _) =>
         action =>
         {
             object? result = onEffect.Invoke(action);
@@ -581,7 +580,7 @@ public static class ObjectCopier
 
 #pragma warning disable CS8603 // 可能返回 null 引用。
         // Don't serialize a null object, simply return the default for that object
-        if (ReferenceEquals(source, null))
+        if (source is null) //if (ReferenceEquals(source, null))
         {
             return default;
         }

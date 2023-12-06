@@ -28,7 +28,7 @@ public class Action
 public class Store<T>
 {
     private T? _state;
-    private readonly IList<System.Action> _listeners;
+    private readonly List<System.Action> _listeners;
     private readonly Reducer<T>? _reducer;
 
     public Get<T> GetState => () => _state!;
@@ -48,7 +48,7 @@ public class Store<T>
         _throwIfNot(initState != null, "Expected the preloadedState to be non-null value.");
 
         _state = initState;
-        _listeners = new List<System.Action>();
+        _listeners = [];
         _reducer = reducer ?? ((state, _) => state);
 
         Dispatch = (action) =>

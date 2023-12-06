@@ -21,7 +21,7 @@ public class PageRoutes : AbstractRoutes
 
     public PageRoutes(Map? pages, string? initialRoute = null)
     {
-        this.pages = pages ?? new Map();
+        this.pages = pages ?? [];
         this.initialRoute = initialRoute;
     }
 
