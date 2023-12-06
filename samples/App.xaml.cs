@@ -1,4 +1,7 @@
-﻿namespace samples
+﻿using Microsoft.Maui.Controls;
+using System.Diagnostics.Metrics;
+
+namespace samples
 {
     public partial class App : Application
     {
@@ -6,8 +9,7 @@
         {
             InitializeComponent();
 
-            //MainPage = new AppShell();
-            MainPage = Routes.routes.home;
+            MainPage = new AppShell();
         }
     }
 }

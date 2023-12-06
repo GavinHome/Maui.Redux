@@ -57,15 +57,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AndroidResource Remove="Pages\Todos\**" />
-	  <Compile Remove="Pages\Todos\**" />
-	  <EmbeddedResource Remove="Pages\Todos\**" />
-	  <MauiCss Remove="Pages\Todos\**" />
-	  <MauiXaml Remove="Pages\Todos\**" />
-	  <None Remove="Pages\Todos\**" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <Compile Remove="Pages\Counter\MainPage.xaml.cs" />
 	</ItemGroup>
 
@@ -80,6 +71,12 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\lib\src\component\component.csproj" />
 	  <ProjectReference Include="..\lib\src\Maui.Base\Maui.Base.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="AppShell.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
