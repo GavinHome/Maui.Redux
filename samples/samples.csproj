@@ -57,12 +57,24 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Converters\**" />
 	  <AndroidResource Remove="Pages\Todos\**" />
+	  <AndroidResource Remove="Utilities\**" />
+	  <Compile Remove="Converters\**" />
 	  <Compile Remove="Pages\Todos\**" />
+	  <Compile Remove="Utilities\**" />
+	  <EmbeddedResource Remove="Converters\**" />
 	  <EmbeddedResource Remove="Pages\Todos\**" />
+	  <EmbeddedResource Remove="Utilities\**" />
+	  <MauiCss Remove="Converters\**" />
 	  <MauiCss Remove="Pages\Todos\**" />
+	  <MauiCss Remove="Utilities\**" />
+	  <MauiXaml Remove="Converters\**" />
 	  <MauiXaml Remove="Pages\Todos\**" />
+	  <MauiXaml Remove="Utilities\**" />
+	  <None Remove="Converters\**" />
 	  <None Remove="Pages\Todos\**" />
+	  <None Remove="Utilities\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -83,6 +95,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\lib\src\component\component.csproj" />
+	  <ProjectReference Include="..\lib\src\Maui.Base\Maui.Base.csproj" />
 	</ItemGroup>
 
 </Project>

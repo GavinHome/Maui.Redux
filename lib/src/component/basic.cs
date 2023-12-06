@@ -1,7 +1,4 @@
-using System.Text.Json;
 namespace Redux.Component;
-
-using Widget = ContentPage;
 
 public abstract class ComponentElement //: ContentView
 {
@@ -585,8 +582,8 @@ public static class ObjectCopier
             return default;
         }
 
-        var stream = JsonSerializer.Serialize<T>(source);
-        return JsonSerializer.Deserialize<T>(stream);
+        var stream = System.Text.Json.JsonSerializer.Serialize<T>(source);
+        return System.Text.Json.JsonSerializer.Deserialize<T>(stream);
 #pragma warning restore CS8603 // 可能返回 null 引用。
     }
 }

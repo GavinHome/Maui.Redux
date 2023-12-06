@@ -20,11 +20,17 @@
 
 	<ItemGroup>
 	  <AndroidResource Remove="component\**" />
+	  <AndroidResource Remove="redux\**" />
 	  <Compile Remove="component\**" />
+	  <Compile Remove="redux\**" />
 	  <EmbeddedResource Remove="component\**" />
+	  <EmbeddedResource Remove="redux\**" />
 	  <MauiCss Remove="component\**" />
+	  <MauiCss Remove="redux\**" />
 	  <MauiXaml Remove="component\**" />
+	  <MauiXaml Remove="redux\**" />
 	  <None Remove="component\**" />
+	  <None Remove="redux\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -34,6 +40,10 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\redux\redux.csproj" />
 	</ItemGroup>
 
 </Project>

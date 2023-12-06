@@ -1,7 +1,4 @@
-﻿using Converters;
-using ReactiveUI;
-
-namespace samples.Pages.Counter;
+﻿namespace samples.Pages.Counter;
 
 public partial class CounterPage : Page<CounterState, Dictionary<string, dynamic>>
 {
@@ -45,10 +42,9 @@ public partial class CounterPage : Page<CounterState, Dictionary<string, dynamic
                 subHeadline.Style = SubHeadlineStyle as Style;
             }
 
-            var clickButton = new Button()
-            {
+            var clickButton = new Button()            {
                 Text = "Click me",
-                Command = ReactiveCommand.Create(() => dispatch(CounterActionCreator.onAddAction())),
+                Command = ReactiveUI.ReactiveCommand.Create(() => dispatch(CounterActionCreator.onAddAction())),
                 HorizontalOptions = LayoutOptions.Fill
             };
             clickButton.SetValue(SemanticProperties.HintProperty, "Counts the number of times you click");

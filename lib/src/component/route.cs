@@ -1,9 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-
-namespace Redux.Component;
-
-using Map = Dictionary<string, dynamic>;
-using Widget = ContentPage;
+﻿namespace Redux.Component;
 
 /// Define a basic behavior of routes.
 public interface AbstractRoutes

@@ -1,7 +1,4 @@
-using Microsoft.Maui.Controls;
 namespace Redux.Component;
-
-using Widget = ContentPage; 
 
 public abstract class Component<T> : BasicComponent<T> //where T : class, new()
 {

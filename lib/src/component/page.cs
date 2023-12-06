@@ -1,8 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-
-namespace Redux.Component;
-
-using Widget = ContentPage;
+﻿namespace Redux.Component;
 
 /// init store's state by route-params
 public delegate T InitState<T, P>(P? param);
