@@ -24,7 +24,6 @@ public partial class CounterPage : Page<CounterState, Dictionary<string, dynamic
             {
                 Text = "Hello, World!",
             };
-
             headline.SetValue(SemanticProperties.HeadingLevelProperty, SemanticHeadingLevel.Level1);
             if (App.Current!.Resources.TryGetValue("Headline", out object HeadlineStyle))
             {

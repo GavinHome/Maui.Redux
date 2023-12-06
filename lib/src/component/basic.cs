@@ -419,7 +419,6 @@ public static class EffectConverter
             SubEffect<T>? subEffect = map.FirstOrDefault(entry => action.Type.Equals(entry.Key)).Value;
             if (subEffect != null)
             {
-                // ReSharper disable once NullCoalescingConditionIsAlwaysNotNullAccordingToAPIContract
                 return (subEffect.Invoke(action, ctx) ?? SubEffectReturnNull) == null;
             }
 
@@ -516,7 +515,6 @@ public class BasicAdapter<T> : ComposedComponent<T>
         List<Dependent<T>> list = builder.Invoke(state);
         foreach (var dep in list)
         {
-            // ReSharper disable once ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
             SubReducer<T>? subReducer = dep?.createSubReducer();
             if (subReducer != null)
             {
