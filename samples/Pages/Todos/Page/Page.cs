@@ -1,8 +1,7 @@
 ﻿using DynamicData.Binding;
-using Microsoft.Maui.Controls.Shapes;
 using ReactiveUI;
 using samples.Pages.Todos.Report;
-using System.Collections.Generic;
+using System.Collections;
 using System.Collections.ObjectModel;
 using System.Reactive.Subjects;
 
@@ -29,27 +28,20 @@ public partial class ToDoListPage : Page<PageState, Dictionary<string, dynamic>>
         view: (state, dispatch, ctx) =>
         {
             var report = ctx.buildComponent("report");
-            ////var itemsView = buildItemsView(state.ToDos!, ctx);
-            //return new View();
-            var todos = ctx.buildComponents();
-            var d = new ListView(ListViewCachingStrategy.RecycleElement);
+            var itemsView = buildItemsView(state.ToDos!, ctx);
+            ////return new View();
             var content = new FlexLayout()
             {
                 Children = {
                      new ScrollView()
                      {
                          Content = new VerticalStackLayout()
-                         {
+                         {   
                              Padding = new Thickness(10,0,10,100),
                              Spacing = 25,
                              Children =
                              {
-                                 new Label { Text = "Label 1", BackgroundColor = Colors.Red,WidthRequest = 100, HeightRequest = 100  },
-                                 new ListView()
-                                 {
-                                     ItemsSource = todos,
-                                 }
-                                 //itemsView
+                                itemsView
                              }
                          }
                      }
@@ -84,27 +76,20 @@ public partial class ToDoListPage : Page<PageState, Dictionary<string, dynamic>>
 
     private static PageState initState(Dictionary<string, dynamic>? param) => new() { ToDos = [] };
 
-    ////private static CollectionView buildItemsView<T>(ObservableCollection<T> obs, ComponentContext<PageState> ctx)
-    ////{
-    ////    ////var source = new Subject<List<Widget>>();
-    ////    var items = new CollectionView()
-    ////    {
-    ////        ////[!ItemsControl.ItemsSourceProperty] = source.ToBinding()
-    ////    };
-    ////    var todos = ctx.buildComponents();
-    ////    items.ItemsSource = todos;
-    ////    //items.SetValue(CollectionView.ItemsSourceProperty, source);
-    ////    //_ = obs.ToObservableChangeSet().Subscribe(x =>
-    ////    //{
-    ////    //    MainThread.InvokeOnMainThreadAsync(() =>
-    ////    //    {
-    ////    //        var todos = ctx.buildComponents();
-    ////    //        ////source.OnNext(todos);
-    ////    //        items.ClearValue(CollectionView.ItemsSourceProperty);
-    ////    //        items.ItemsSource = todos;
-    ////    //    });
-    ////    //});
+    private static CollectionView buildItemsView(ObservableCollection<Todo.ToDoState> obs, ComponentContext<PageState> ctx)
+    {
+        var source = new Subject<List<Widget>>();
+        var items = new CollectionView(); 
+        items.BindingContext = source.BindTo<IEnumerable, CollectionView, IEnumerable>(items, items => items.ItemsSource);
+        _ = obs.ToObservableChangeSet().Subscribe(x =>
+        {
+            Application.Current?.Dispatcher.Dispatch(() =>
+            {
+                var todos = ctx.buildComponents();
+                source.OnNext(todos);
+            });
+        });
 
-    ////    return items;
-    ////}
+        return items;
+    }
 }

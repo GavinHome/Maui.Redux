@@ -95,7 +95,7 @@ static class Log
 {
     public static void doPrint(object message)
     {
-        Action<Object> print = obj => Console.WriteLine($"[AvaloniaRedux]: {obj}");
+        Action<Object> print = obj => Console.WriteLine($"[MauiRedux]: {obj}");
         if (Aop.isDebug())
         {
             print(message);

@@ -4,12 +4,12 @@
 /// It works on debug mode.
 public static class Middlewares
 {
-    public static Middleware<T> logMiddleware<T>(Func<T, string>? monitor = null, string tag = "avalonia-redux")
+    public static Middleware<T> logMiddleware<T>(Func<T, string>? monitor = null, string tag = "maui-redux")
     {
         return (_, getState) =>
             (next) =>
             {
-                Action<object> print = (obj) => Console.WriteLine($"[AvaloniaRedux]: {obj}");
+                Action<object> print = (obj) => Console.WriteLine($"[MauiRedux]: {obj}");
 
                 Dispatch log = (action) =>
                 {
