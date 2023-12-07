@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="samples.Pages.Todos.Todo.View">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <toolkit:BoolToObjectConverter x:Key="BoolToObjectConverter" TrueObject="Green" FalseObject="Red" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    
     <VerticalStackLayout>
         <FlyoutBase.ContextFlyout>
             <MenuFlyout>
-                <MenuFlyoutItem Text="Remove">
+                <MenuFlyoutItem Text="Remove" Command="{Binding Path=OnRemoveCommand, Source={RelativeSource AncestorType={x:Type ContentView}, AncestorLevel=1}}">
                     <MenuFlyoutItem.IconImageSource>
                         <FontImageSource Glyph="&#x1F5D9;" Color="Red" />
                     </MenuFlyoutItem.IconImageSource>
                 </MenuFlyoutItem>
             </MenuFlyout>
         </FlyoutBase.ContextFlyout>
-        <VerticalStackLayout Padding="0,10" Background="Green">
+        <VerticalStackLayout Padding="0,10" BackgroundColor="{Binding IsDone, Converter={StaticResource BoolToObjectConverter}}">
             <FlexLayout FlexLayout.Grow="1">
                 <VerticalStackLayout FlexLayout.Grow="1">
-                    <Label Text="Hello Maui" FontSize="18" TextColor="White" VerticalOptions="Center" />
+                    <Label Text="{Binding Title}" FontSize="18" TextColor="White" VerticalOptions="Center" />
                 </VerticalStackLayout>
 
                 <VerticalStackLayout FlexLayout.Basis="50" FlexLayout.Order="-1">
@@ -24,7 +32,12 @@
                 </VerticalStackLayout>
 
                 <Grid FlexLayout.Basis="50">
-                    <CheckBox ScaleX="1" ScaleY="1" MinimumHeightRequest="0" Margin="0,-8,0,-8"/>
+                    <CheckBox ScaleX="1" ScaleY="1" MinimumHeightRequest="0" Margin="0,-8,0,-8" 
+                              IsChecked="{Binding IsDone, Mode=OneWay}">
+                        <CheckBox.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=OnDoneCommand, Source={RelativeSource AncestorType={x:Type ContentView}, AncestorLevel=1}}" />
+                        </CheckBox.GestureRecognizers>
+                    </CheckBox>
                 </Grid>
 
             </FlexLayout>
@@ -32,12 +45,16 @@
         <VerticalStackLayout Background="LightGray" Padding="15, 15, 10, 15">
             <FlexLayout FlexLayout.Grow="1">
                 <VerticalStackLayout FlexLayout.Grow="1">
-                    <Label Text="Learn how to build a maui app." TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" FlexLayout.Grow="1"/>
+                    <Label Text="{Binding Desc}" TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" FlexLayout.Grow="1"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout FlexLayout.Basis="50">
                     <Border HorizontalOptions="Fill" VerticalOptions="Fill" Background="Transparent" StrokeThickness="0" FlexLayout.AlignSelf="End">
                         <Path HorizontalOptions="Center" VerticalOptions="Center" Fill="Black" 
-    Data="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z"/>
+                              Data="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z"/>
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Path=OnEditCommand, Source={RelativeSource AncestorType={x:Type ContentView}, AncestorLevel=1}}" />
+                        </Border.GestureRecognizers>
                     </Border>
                 </VerticalStackLayout>
 

@@ -19,10 +19,4 @@ public partial class AddButton : ContentView
         InitializeComponent();
         this.BindingContext = this;
     }
-
-    void OnTapGestureRecognizerTapped(object sender, TappedEventArgs args)
-    {
-        // Handle the tap
-        //OnAddTodo.Execute(this);
-    }
 }

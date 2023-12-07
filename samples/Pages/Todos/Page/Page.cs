@@ -1,6 +1,7 @@
 ﻿using DynamicData.Binding;
 using ReactiveUI;
 using samples.Pages.Todos.Report;
+using samples.Pages.Todos.Todo;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Reactive.Subjects;
@@ -30,6 +31,7 @@ public partial class ToDoListPage : Page<PageState, Dictionary<string, dynamic>>
             var report = ctx.buildComponent("report");
             var itemsView = buildItemsView(state.ToDos!, ctx);
             ////return new View();
+            var todos = ctx.buildComponents();
             var content = new FlexLayout()
             {
                 Children = {
@@ -41,7 +43,10 @@ public partial class ToDoListPage : Page<PageState, Dictionary<string, dynamic>>
                              Spacing = 25,
                              Children =
                              {
-                                itemsView
+                                itemsView,
+                                todos[0],
+                                todos[1],
+                                todos[2],
                              }
                          }
                      }
