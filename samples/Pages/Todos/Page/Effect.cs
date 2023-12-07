@@ -16,7 +16,7 @@ public partial class ToDoListPage
         List<ToDoState> initToDos =
         [
             new ToDoState(uniqueId: "0", title: "Hello world", desc: "Learn how to program.", isDone: true),
-            new ToDoState(uniqueId: "1", title: "Hello Avalonia", desc: "Learn how to build an avalonia app.", isDone: true),
+            new ToDoState(uniqueId: "1", title: "Hello Avalonia", desc: "Learn how to build an avalonia app.", isDone: false),
             new ToDoState(uniqueId: "2", title: "Hello Avalonia Redux", desc: "Learn how to use Avalonia Redux in an avalonia app."),
         ];
 
@@ -38,6 +38,11 @@ public partial class ToDoListPage
         ////            }));
         ////        }
         ////    });
+        ctx.Dispatch(new Action("add", payload: new ToDoState
+        {
+            Title = $"test",
+            Desc = $"test",
+        }));
         await Task.CompletedTask;
     }
 }

@@ -12,9 +12,10 @@
         <FlexLayout FlexLayout.Grow="1">
             <ScrollView>
                 <VerticalStackLayout Padding="10,0,10,100" Spacing="25">
+                    <!--<todo:View />
                     <todo:View />
-                    <todo:View />
-                    <todo:View />
+                    <todo:View />-->
+                    
                 </VerticalStackLayout>
             </ScrollView>
         </FlexLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="samples.Pages.Todos.Page.AddButton">
+    <Grid ZIndex="100">
+        <Border HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" HeightRequest="50" WidthRequest="50" Padding="8,5,12,8" Background="#bbe9d4ff"
+                    StrokeThickness="0" Margin="0,0,15,-35">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="15" />
+            </Border.StrokeShape>
+            <Path HorizontalOptions="Center" VerticalOptions="Center" Fill="Black" Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/>
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding Path=OnAddTodo}" />
+            </Border.GestureRecognizers>
+        </Border>
+    </Grid>
+</ContentView>
