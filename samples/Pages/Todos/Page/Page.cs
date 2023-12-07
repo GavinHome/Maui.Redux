@@ -30,7 +30,6 @@ public partial class ToDoListPage : Page<PageState, Dictionary<string, dynamic>>
         {
             var report = ctx.buildComponent("report");
             var itemsView = buildItemsView(state.ToDos!, ctx);
-            ////return new View();
             var todos = ctx.buildComponents();
             var content = new FlexLayout()
             {
@@ -52,7 +51,6 @@ public partial class ToDoListPage : Page<PageState, Dictionary<string, dynamic>>
                      }
                 }
             };
-
             content.Grow(1f);
 
             var addButton = new AddButton()
