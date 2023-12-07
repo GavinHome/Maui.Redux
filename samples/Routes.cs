@@ -7,7 +7,7 @@ namespace samples;
 public static class Routes
 {
     public static readonly AbstractRoutes Current = new PageRoutes(
-        initialRoute: "count",
+        initialRoute: "todo_list",
         pages: new Dictionary<String, dynamic>
         {
             //// Register TodoList main page

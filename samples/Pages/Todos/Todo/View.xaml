@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="samples.Pages.Todos.Todo.View">
+    <VerticalStackLayout>
+        <FlyoutBase.ContextFlyout>
+            <MenuFlyout>
+                <MenuFlyoutItem Text="Remove">
+                    <MenuFlyoutItem.IconImageSource>
+                        <FontImageSource Glyph="&#x1F5D9;" Color="Red" />
+                    </MenuFlyoutItem.IconImageSource>
+                </MenuFlyoutItem>
+            </MenuFlyout>
+        </FlyoutBase.ContextFlyout>
+        <VerticalStackLayout Padding="0,10" Background="Green">
+            <FlexLayout FlexLayout.Grow="1">
+                <VerticalStackLayout FlexLayout.Grow="1">
+                    <Label Text="Hello Maui" FontSize="18" TextColor="White" VerticalOptions="Center" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout FlexLayout.Basis="50" FlexLayout.Order="-1">
+                    <Path Background="Transparent" Fill="Black" HorizontalOptions="Center" VerticalOptions="Center"
+                          Data="M16,17H5V7H16L19.55,12M17.63,5.84C17.27,5.33 16.67,5 16,5H5A2,2 0 0,0 3,7V17A2,2 0 0,0 5,19H16C16.67,19 17.27,18.66 17.63,18.15L22,12L17.63,5.84Z"/>
+                </VerticalStackLayout>
+
+                <Grid FlexLayout.Basis="50">
+                    <CheckBox ScaleX="1" ScaleY="1" MinimumHeightRequest="0" Margin="0,-8,0,-8"/>
+                </Grid>
+
+            </FlexLayout>
+        </VerticalStackLayout>
+        <VerticalStackLayout Background="LightGray" Padding="15, 15, 10, 15">
+            <FlexLayout FlexLayout.Grow="1">
+                <VerticalStackLayout FlexLayout.Grow="1">
+                    <Label Text="Learn how to build a maui app." TextColor="Black" HorizontalOptions="Start" VerticalOptions="Center" FlexLayout.Grow="1"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout FlexLayout.Basis="50">
+                    <Border HorizontalOptions="Fill" VerticalOptions="Fill" Background="Transparent" StrokeThickness="0" FlexLayout.AlignSelf="End">
+                        <Path HorizontalOptions="Center" VerticalOptions="Center" Fill="Black" 
+    Data="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z"/>
+                    </Border>
+                </VerticalStackLayout>
+
+            </FlexLayout>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentView>
