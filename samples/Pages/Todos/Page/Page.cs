@@ -27,13 +27,9 @@ public partial class ToDoListPage : Page<PageState, Dictionary<string, dynamic>>
         ),
         view: (state, dispatch, ctx) =>
         {
+            var layout = buildItemsView(state.ToDos!, ctx);
+            var addBtnView = buildAddBtnView(dispatch);
             var report = ctx.buildComponent("report");
-            var itemsView = buildItemsView(state.ToDos!, ctx);
-            var content = new FlexLayout().Grow(1f);
-            content.Children.Add(new ScrollView() { Content = itemsView });
-
-            var addButton = buildAddBtnView(dispatch);
-
             return new ContentPage()
             {
                 Title = state.Title,
@@ -42,8 +38,8 @@ public partial class ToDoListPage : Page<PageState, Dictionary<string, dynamic>>
                     Direction = Microsoft.Maui.Layouts.FlexDirection.Column,
                     Children =
                     {
-                        content,
-                        addButton,
+                        layout,
+                        addBtnView,
                         report
                     }
                 }
@@ -98,9 +94,11 @@ public partial class ToDoListPage : Page<PageState, Dictionary<string, dynamic>>
         };
     }
 
-    private static VerticalStackLayout buildItemsView(ObservableCollection<Todo.ToDoState> obs, ComponentContext<PageState> ctx)
+    private static FlexLayout buildItemsView(ObservableCollection<Todo.ToDoState> obs, ComponentContext<PageState> ctx)
     {
         var layout = new VerticalStackLayout() { Spacing = 25 }.Padding(new Thickness(10, 0, 10, 100));
+        var content = new FlexLayout().Grow(1f);
+        content.Children.Add(new ScrollView() { Content = layout });
 
         _ = obs.ToObservableChangeSet().Subscribe(x =>
         {
@@ -112,6 +110,6 @@ public partial class ToDoListPage : Page<PageState, Dictionary<string, dynamic>>
             });
         });
 
-        return layout;
+        return content;
     }
 }
