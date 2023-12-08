@@ -1,10 +1,9 @@
-﻿using DynamicData.Binding;
+﻿using DynamicData;
+using DynamicData.Binding;
 using Microsoft.Maui.Controls.Shapes;
 using ReactiveUI;
 using samples.Pages.Todos.Report;
-using System.Collections;
 using System.Collections.ObjectModel;
-using System.Reactive.Subjects;
 namespace samples.Pages.Todos.Page;
 
 using Action = Redux.Action;
@@ -30,28 +29,8 @@ public partial class ToDoListPage : Page<PageState, Dictionary<string, dynamic>>
         {
             var report = ctx.buildComponent("report");
             var itemsView = buildItemsView(state.ToDos!, ctx);
-            var todos = ctx.buildComponents();
-            var content = new FlexLayout()
-            {
-                Children = {
-                     new ScrollView()
-                     {
-                         Content = new VerticalStackLayout()
-                         {
-                             Padding = new Thickness(10,0,10,100),
-                             Spacing = 25,
-                             Children =
-                             {
-                                itemsView,
-                                todos[0],
-                                todos[1],
-                                todos[2],
-                             }
-                         }
-                     }
-                }
-            };
-            content.Grow(1f);
+            var content = new FlexLayout().Grow(1f);
+            content.Children.Add(new ScrollView() { Content = itemsView });
 
             var addButton = buildAddBtnView(dispatch);
 
@@ -119,20 +98,20 @@ public partial class ToDoListPage : Page<PageState, Dictionary<string, dynamic>>
         };
     }
 
-    private static CollectionView buildItemsView(ObservableCollection<Todo.ToDoState> obs, ComponentContext<PageState> ctx)
+    private static VerticalStackLayout buildItemsView(ObservableCollection<Todo.ToDoState> obs, ComponentContext<PageState> ctx)
     {
-        var source = new Subject<List<Widget>>();
-        var items = new CollectionView();
-        items.BindingContext = source.BindTo<IEnumerable, CollectionView, IEnumerable>(items, items => items.ItemsSource);
+        var layout = new VerticalStackLayout() { Spacing = 25 }.Padding(new Thickness(10, 0, 10, 100));
+
         _ = obs.ToObservableChangeSet().Subscribe(x =>
         {
             Application.Current?.Dispatcher.Dispatch(() =>
             {
                 var todos = ctx.buildComponents();
-                source.OnNext(todos);
+                layout.Children.Clear();
+                layout.Children.AddRange(todos);
             });
         });
 
-        return items;
+        return layout;
     }
 }
