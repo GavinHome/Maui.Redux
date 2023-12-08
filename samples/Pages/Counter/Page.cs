@@ -53,7 +53,7 @@ public partial class CounterPage : Page<CounterState, Dictionary<string, dynamic
                 new Binding(
                     path: nameof(state.Count),
                     source: state,
-                    converter: new FuncValueConverter<int, string>(count => count == 0 ? "Click me" : ($"Clicked {count} time" + (count > 1 ? "s" : string.Empty)))
+                    converter: new FuncConverter<int, string>(count => count == 0 ? "Click me" : ($"Clicked {count} time" + (count > 1 ? "s" : string.Empty)))
                 )
             );
 

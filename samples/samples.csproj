@@ -79,7 +79,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\lib\src\component\component.csproj" />
-	  <ProjectReference Include="..\lib\src\Maui.Base\Maui.Base.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
