@@ -58,10 +58,12 @@
 
 	<ItemGroup>
 	  <Compile Remove="Pages\Counter\MainPage.xaml.cs" />
+	  <Compile Remove="Pages\Todos\Page\AddButton.xaml.cs" />
 	  <Compile Remove="Pages\Todos\Page\View.xaml.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Remove="Pages\Todos\Page\AddButton.xaml" />
 	  <MauiXaml Remove="Pages\Todos\Page\View.xaml" />
 	</ItemGroup>
 
@@ -81,16 +83,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Pages\Todos\Page\AddButton.xaml.cs">
-	    <DependentUpon>AddButton.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiXaml Update="AppShell.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\Todos\Page\AddButton.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Todos\Report\View.xaml">
