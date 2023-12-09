@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8F9F5E53-A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.Redux.Test", "test\Maui.Redux.Test\Maui.Redux.Test.csproj", "{E48C0CD9-ACD5-45B0-9354-B10D7CCD6AE6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决方案项", "{73484244-FD44-4B8B-B337-5F24C9C9C0AF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "readme", "readme", "{73484244-FD44-4B8B-B337-5F24C9C9C0AF}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 		README.zh.md = README.zh.md

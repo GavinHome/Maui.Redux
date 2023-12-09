@@ -18,9 +18,9 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="navigator.cs" />
-  </ItemGroup>
+	<ItemGroup>
+	  <Compile Remove="navigator.cs" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />

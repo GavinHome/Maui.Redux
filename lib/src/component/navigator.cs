@@ -68,11 +68,11 @@ public class Navigator : StatefulWidget
         return navigatorState;
     }
 
-    public override State createState() => navigatorState;
+    public override NavigatorState createState() => navigatorState;
 }
 
 /// [NavigatorState]
-public class NavigatorState : State
+public class NavigatorState : State<StatefulWidget>
 {
     readonly Stack<_RouteEntry> _history = new();
     private _RouteEntry? _current;
@@ -133,5 +133,5 @@ public class NavigatorState : State
         _current = entry;
         Navigator.onChange?.Invoke();
         return Task.Run(() => _current.Route);
-    }
+    } 
 }
