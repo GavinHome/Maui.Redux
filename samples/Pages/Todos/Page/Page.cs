@@ -8,9 +8,7 @@ namespace samples.Pages.Todos.Page;
 
 using Action = Redux.Action;
 
-public partial class ToDoListPage : Page<PageState, Dictionary<string, dynamic>>
-{
-    public ToDoListPage() : base(
+public partial class ToDoListPage() : Page<PageState, Dictionary<string, dynamic>>(
         initState: initState,
         effect: buildEffect(),
         reducer: buildReducer(),
@@ -45,8 +43,7 @@ public partial class ToDoListPage : Page<PageState, Dictionary<string, dynamic>>
                 }
             };
         })
-    {
-    }
+{  
 
     private static PageState initState(Dictionary<string, dynamic>? param) => new()
     {

@@ -2,9 +2,7 @@
 using ReactiveUI;
 using samples.Pages.Todos.Todo;
 
-public partial class TodoEditPage : Page<TodoEditState, ToDoState>
-{
-    public TodoEditPage() : base(
+public partial class TodoEditPage() : Page<TodoEditState, ToDoState>(
         initState: initState,
         effect: buildEffect(),
         middlewares:
@@ -193,7 +191,6 @@ public partial class TodoEditPage : Page<TodoEditState, ToDoState>
     //        }
     //    };
     //})
-    { }
-
+{ 
     private static TodoEditState initState(ToDoState? arg) => new() { toDo = arg?.Clone() ?? new() };
 }

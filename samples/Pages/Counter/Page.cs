@@ -1,8 +1,6 @@
 ﻿namespace samples.Pages.Counter;
 
-public partial class CounterPage : Page<CounterState, Dictionary<string, dynamic>>
-{
-    public CounterPage() : base(
+public partial class CounterPage() : Page<CounterState, Dictionary<string, dynamic>>(
         initState: initState,
         effect: buildEffect(),
         reducer: buildReducer(),
@@ -82,7 +80,6 @@ public partial class CounterPage : Page<CounterState, Dictionary<string, dynamic
                 }
             };
         })
-    { }
-
+{
     private static CounterState initState(Dictionary<string, dynamic>? param) => new() { Count = param?.GetValueOrDefault("count") ?? 0, Title = param?.GetValueOrDefault("title") ?? string.Empty };
 }
