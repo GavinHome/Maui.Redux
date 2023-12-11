@@ -55,17 +55,17 @@ public partial class CounterPage() : Page<CounterState, Dictionary<string, dynam
                 )
             );
 
-            var title = string.IsNullOrEmpty(state.Title);
             var toDosButton = new Button()
             {
-                Text = title ? "ToDos" : "Back",
-                Command = ReactiveUI.ReactiveCommand.Create(() => AppShell.Current?.GoToAsync(title ? "//ToDos" : "//Counter")),
+                Text = "ToDos",
+                Command = ReactiveUI.ReactiveCommand.Create(() => AppShell.Current?.GoToAsync("//todo_list")),
                 HorizontalOptions = LayoutOptions.Fill
             };
-            toDosButton.SetValue(SemanticProperties.HintProperty, title ? "Go to ToDosPage" : "Back to CounterPage");
+            toDosButton.SetValue(SemanticProperties.HintProperty, "Go to ToDosPage");
 
             return new ContentPage()
             {
+                Title = state.Title,
                 Content = new ScrollView()
                 {
                     Content = new VerticalStackLayout()

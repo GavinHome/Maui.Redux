@@ -27,23 +27,19 @@ public partial class ToDoListPage
 
     private static async Task _onAdd(Action action, ComponentContext<PageState> ctx)
     {
-        ////await Navigator.of(ctx)
-        ////    .pushNamed<ToDoState>("todo_edit", arguments: null, (toDo) =>
-        ////    {
-        ////        if (toDo != null)
-        ////        {
-        ////            ctx.Dispatch(new Action("add", payload: new ToDoState
-        ////            {
-        ////                Title = $"{toDo.Title}",
-        ////                Desc = $"{toDo.Desc}",
-        ////            }));
-        ////        }
-        ////    });
-        ctx.Dispatch(new Action("add", payload: new ToDoState
-        {
-            Title = $"test",
-            Desc = $"test",
-        }));
+        await Navigator.of(ctx)
+            .pushNamed<ToDoState>("todo_edit", arguments: null, (toDo) =>
+            {
+                if (toDo != null)
+                {
+                    ctx.Dispatch(new Action("add", payload: new ToDoState
+                    {
+                        Title = $"{toDo.Title}",
+                        Desc = $"{toDo.Desc}",
+                    }));
+                }
+            });
+
         await Task.CompletedTask;
     }
 }

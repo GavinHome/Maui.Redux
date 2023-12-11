@@ -10,6 +10,8 @@ namespace samples
             InitializeComponent();
 
             MainPage = new AppShell();
+
+            AppShell.Current?.GoToAsync("//todo_list");
         }
     }
 }

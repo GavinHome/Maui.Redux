@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="samples.Pages.Todos.Edit.View">
+    <FlexLayout Direction="Column">
+        <FlexLayout FlexLayout.Grow="1">
+            <ScrollView>
+                <Grid RowSpacing="20" Padding="10,0" ColumnSpacing="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Text="title:"
+                            VerticalOptions="Center" HorizontalOptions="Center" />
+                    <Editor Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" Text="{Binding toDo.Title}" />
+                    
+                    <Label Grid.Row="1" Grid.Column="0" Text="desc:"
+                            VerticalOptions="Start" HorizontalOptions="Center" />
+                    <Editor Grid.Row="1" Grid.Column="1" HeightRequest="300"  Text="{Binding toDo.Desc}"/>
+                </Grid>
+            </ScrollView>
+        </FlexLayout>
+
+        <VerticalStackLayout>
+            <Border HorizontalOptions="Center" VerticalOptions="Center" Background="#bbe9d4ff"
+                    HeightRequest="50" WidthRequest="50" StrokeThickness="0" Margin="30" Padding="8,5,12,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="15" />
+                </Border.StrokeShape>
+                <Path HorizontalOptions="Center" VerticalOptions="Center" Fill="Black" Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Path=OnDoneCommand, Source={RelativeSource AncestorType={x:Type ContentPage}, AncestorLevel=1}}" />
+                </Border.GestureRecognizers>
+            </Border>
+        </VerticalStackLayout>
+    </FlexLayout>
+</ContentPage>

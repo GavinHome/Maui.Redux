@@ -16,14 +16,14 @@ internal partial class TodoComponent
     {
         if (action.Payload == ctx.state.UniqueId)
         {
-            //await Navigator.of(ctx)
-            //.pushNamed<ToDoState>("todo_edit", arguments: ctx.state, (toDo) =>
-            //{
-            //    if (toDo != null)
-            //    {
-            //        ctx.Dispatch(ToDoActionCreator.editAction(toDo));
-            //    }
-            //});
+            await Navigator.of(ctx)
+            .pushNamed<ToDoState>("todo_edit", arguments: ctx.state, (toDo) =>
+            {
+                if (toDo != null)
+                {
+                    ctx.Dispatch(ToDoActionCreator.editAction(toDo));
+                }
+            });
         }
 
         await Task.CompletedTask;

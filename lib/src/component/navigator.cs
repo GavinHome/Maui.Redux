@@ -16,33 +16,23 @@ public record RouteSettings(string name = "", dynamic? arguments = null);
 public delegate dynamic RouteFactory(RouteSettings settings);
 
 /// [Route]
-public class Route<T> where T : class
+public class Route<T>(RouteSettings? settings, dynamic content) where T : class
 {
-    RouteSettings _settings;
-    dynamic? _content;
+    readonly RouteSettings _settings = settings ?? new RouteSettings();
+    readonly dynamic? _content = content;
 
     public dynamic Content => _content!;
+    public RouteSettings settings => _settings!;
 
     public Action<T>? Func { get; internal set; }
-
-    public Route(RouteSettings? settings, dynamic content, Action<T?>? call = null)
-    {
-        _settings = settings ?? new RouteSettings();
-        _content = content;
-    }
 }
 
 /// [_RouteEntry]
-class _RouteEntry
+class _RouteEntry(Route<dynamic> route)
 {
-    readonly Route<dynamic>? _route;
+    readonly Route<dynamic>? _route = route;
 
     public Route<dynamic> Route => _route!;
-
-    public _RouteEntry(Route<dynamic> route)
-    {
-        _route = route;
-    }
 
     public override bool Equals(object? obj)
     {
@@ -58,12 +48,14 @@ class _RouteEntry
 /// [Navigator]
 public class Navigator : StatefulWidget
 {
-    public static System.Action? onChange;
-    private static NavigatorState navigatorState = new NavigatorState();
+#pragma warning disable CA2211 // 非常量字段应当不可见
+    public static System.Action<RouteSettings>? onChange;
+#pragma warning restore CA2211 // 非常量字段应当不可见
+    private static readonly NavigatorState navigatorState = new();
 
     public static RouteFactory? onGenerateRoute { get; set; }
 
-    public static NavigatorState of(dynamic? ctx = null)
+    public static NavigatorState of(dynamic? _ = null)
     {
         return navigatorState;
     }
@@ -78,6 +70,7 @@ public class NavigatorState : State<StatefulWidget>
     private _RouteEntry? _current;
 
     public Widget current => _current!.Route.Content;
+    public Route<dynamic> route => _current!.Route;
 
     public override Widget build(dynamic context)
     {
@@ -98,10 +91,7 @@ public class NavigatorState : State<StatefulWidget>
 
     public Task<Route<dynamic>> push(Route<dynamic> route)
     {
-        if (route == null)
-        {
-            throw new ArgumentNullException(nameof(route));
-        }
+        ArgumentNullException.ThrowIfNull(route);
 
         _pushEntry(new _RouteEntry(route));
         return Task.Run(() => _history.Pop().Route);
@@ -110,7 +100,7 @@ public class NavigatorState : State<StatefulWidget>
     Route<T>? _routeNamed<T>(string routeName, dynamic? arguments) where T : class
     {
         var content = Navigator.onGenerateRoute?.Invoke(new RouteSettings(routeName, arguments));
-        Route<T>? route = new Route<T>(new RouteSettings(routeName, arguments), content);
+        Route<T>? route = new(new RouteSettings(routeName, arguments), content);
         return route;
     }
 
@@ -123,7 +113,7 @@ public class NavigatorState : State<StatefulWidget>
 
         _current = entry;
         _history.Push(entry);
-        Navigator.onChange?.Invoke();
+        Navigator.onChange?.Invoke(_current.Route.settings);
     }
 
     Task<Route<dynamic>> _pop<T>(T? result)
@@ -131,7 +121,7 @@ public class NavigatorState : State<StatefulWidget>
         _current?.Route.Func?.Invoke(result as dynamic);
         var entry = _history.Pop();
         _current = entry;
-        Navigator.onChange?.Invoke();
+        Navigator.onChange?.Invoke(_current.Route.settings);
         return Task.Run(() => _current.Route);
     } 
 }
