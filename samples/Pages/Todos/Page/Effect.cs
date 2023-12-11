@@ -30,7 +30,7 @@ public partial class ToDoListPage
         await Navigator.of(ctx)
             .pushNamed<ToDoState>("todo_edit", arguments: null, (toDo) =>
             {
-                if (toDo != null)
+                if (toDo != null && !string.IsNullOrEmpty(toDo.Title) && !string.IsNullOrEmpty(toDo.Desc))
                 {
                     ctx.Dispatch(new Action("add", payload: new ToDoState
                     {

@@ -19,7 +19,7 @@ internal partial class TodoComponent
             await Navigator.of(ctx)
             .pushNamed<ToDoState>("todo_edit", arguments: ctx.state, (toDo) =>
             {
-                if (toDo != null)
+                if (toDo != null && !string.IsNullOrEmpty(toDo.Title) && !string.IsNullOrEmpty(toDo.Desc))
                 {
                     ctx.Dispatch(ToDoActionCreator.editAction(toDo));
                 }
