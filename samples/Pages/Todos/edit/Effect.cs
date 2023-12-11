@@ -19,5 +19,3 @@ public partial class TodoEditPage
         await Task.CompletedTask;
     }
 }
-
-

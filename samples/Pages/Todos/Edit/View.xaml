@@ -32,7 +32,11 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="15" />
                 </Border.StrokeShape>
-                <Path HorizontalOptions="Center" VerticalOptions="Center" Fill="Black" Data="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/>
+                <Path HorizontalOptions="Center" VerticalOptions="Center" Fill="Black" Data="M23,13 H5V11 H7V5 H5V11 H23 V13Z">
+                    <Path.RenderTransform>
+                        <RotateTransform CenterX="10"  CenterY="5"  Angle="-40" />
+                    </Path.RenderTransform>
+                </Path>
                 <Border.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding Path=OnDoneCommand, Source={RelativeSource AncestorType={x:Type ContentPage}, AncestorLevel=1}}" />
                 </Border.GestureRecognizers>
