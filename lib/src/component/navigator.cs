@@ -1,6 +1,6 @@
 ﻿/* 
  * [ToDo]
- * The navigator is not pefect, but I have to a simple implementation for route.
+ * The navigator is not perfect, but I have to a simple implementation for route.
  * 
  */
 using Microsoft.Maui.Controls;
