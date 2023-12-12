@@ -15,13 +15,13 @@ namespace samples
 
             Items.Clear();
 
-            //ShellContent counterPage = new()
-            //{
-            //    Title = "Counter",
-            //    Route = "count",
-            //    Content = Routes.Current.buildPage("count", new Dictionary<string, dynamic> { { "title", "Counter" } }),
-            //};
-            //Items.Add(counterPage);
+            ShellContent counterPage = new()
+            {
+                Title = "Counter",
+                Route = "count",
+                Content = Routes.Current.buildPage("count", new Dictionary<string, dynamic> { { "title", "Counter" } }),
+            };
+            Items.Add(counterPage);
 
             ShellContent toDoListPage = new()
             {
@@ -32,6 +32,7 @@ namespace samples
             };
             Items.Add(toDoListPage);
 
+            //// Dynamic content for ToDoEditPage
             ShellContent toDoEditPage = new()
             {
                 Title = "ToDoEdit",
@@ -48,6 +49,7 @@ namespace samples
 
             Navigator.onChange += (RouteSettings settings) =>
             {
+                //// If current route is todo edit, and set content
                 if(settings.name == "todo_edit")
                 {
                     toDoEditPage.Content = Navigator.of().current;

@@ -11,7 +11,7 @@ namespace samples
 
             MainPage = new AppShell();
 
-            AppShell.Current?.GoToAsync("//todo_list");
+            AppShell.Current?.GoToAsync("//count");
         }
     }
 }
