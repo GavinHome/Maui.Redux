@@ -1,6 +1,6 @@
 namespace Redux.Component;
 
-public abstract class Component<T> : BasicComponent<T> //where T : class, new()
+public abstract class Component<T> : BasicComponent<T>
 {
     protected Component(ViewBuilder<T>? view, Effect<T>? effect = null, Reducer<T>? reducer = null, Dependencies<T>? dependencies = null, ShouldUpdate<T>? shouldUpdate = null)
         : base(view: view,
@@ -21,20 +21,14 @@ public abstract class Component<T> : BasicComponent<T> //where T : class, new()
     }
 }
 
-public class _ComponentWidget<T> : StatefulWidget
+public class _ComponentWidget<T>(BasicComponent<T> component, Store<object> store, Get<T> getter, Dependencies<T>? dependencies) : StatefulWidget
 {
-    private readonly BasicComponent<T> component;
-    private readonly Store<object> store;
-    private readonly Get<T> getter;
-    private readonly Dependencies<T>? dependencies;
-
-    public _ComponentWidget(BasicComponent<T> component, Store<object> store, Get<T> getter, Dependencies<T>? dependencies)
-    {
-        this.component = component;
-        this.store = store;
-        this.getter = getter;
-        this.dependencies = dependencies;
-    }
+    private readonly BasicComponent<T> component = component;
+    private readonly Store<object> store = store;
+    private readonly Get<T> getter = getter;
+#pragma warning disable IDE0052 // 删除未读的私有成员
+    private readonly Dependencies<T>? dependencies = dependencies;
+#pragma warning restore IDE0052 // 删除未读的私有成员
 
     ////public override State<StatefulWidget> createState()
     ////{

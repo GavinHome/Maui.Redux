@@ -9,7 +9,7 @@ public static class Middlewares
         return (_, getState) =>
             (next) =>
             {
-                Action<object> print = (obj) => Console.WriteLine($"[MauiRedux]: {obj}");
+                Action<object> print = (obj) => System.Diagnostics.Trace.WriteLine($"[MauiRedux]: {obj}");
 
                 Dispatch log = (action) =>
                 {

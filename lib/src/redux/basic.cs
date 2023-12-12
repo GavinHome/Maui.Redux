@@ -2,16 +2,10 @@ namespace Redux;
 
 /// [Action]
 /// Effect or Reducer message action
-public class Action
+public class Action(object type, dynamic? payload = null)
 {
-    private readonly object _type;
-    private readonly dynamic? _payload;
-
-    public Action(object type, dynamic? payload = null)
-    {
-        _type = type;
-        _payload = payload;
-    }
+    private readonly object _type = type;
+    private readonly dynamic? _payload = payload;
 
     public object Type => _type;
     public dynamic? Payload => _payload;
@@ -40,7 +34,9 @@ public class Store<T>
     public ReplaceReducer<T> ReplaceReducer { get; private set; }
 
     bool isDispatching = false;
+#pragma warning disable IDE0044 // Ìí¼ÓÖ»¶ÁÐÞÊÎ·û
     bool isDisposed = false;
+#pragma warning restore IDE0044 // Ìí¼ÓÖ»¶ÁÐÞÊÎ·û
 
     public Store(T? initState, Reducer<T>? reducer, List<Middleware<T>>? middleware)
     {
@@ -130,14 +126,9 @@ public delegate Unsubscribe Subscribe(System.Action callback);
 /// [Unsubscribe]
 /// Definition of a standard un-subscription function.
 ////public delegate void Unsubscribe();
-public class Unsubscribe
+public class Unsubscribe(Func<bool> cancel)
 {
-    public Func<bool> Cancel { get; private set; }
-
-    public Unsubscribe(Func<bool> cancel)
-    {
-        Cancel = cancel;
-    }
+    public Func<bool> Cancel { get; private set; } = cancel;
 }
 
 //// [Observable]

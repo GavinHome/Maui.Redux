@@ -28,16 +28,10 @@ public abstract class Page<T, P> : Component<T>
     public Widget buildPage(P? param) => new _PageWidget<T, P>(param: param, page: this).create();
 }
 
-class _PageWidget<T, P> : StatefulWidget
+class _PageWidget<T, P>(P? param, Page<T, P> page) : StatefulWidget
 {
-    readonly P? param;
-    readonly Page<T, P> page;
-
-    public _PageWidget(P? param, Page<T, P> page)
-    {
-        this.param = param;
-        this.page = page;
-    }
+    readonly P? param = param;
+    readonly Page<T, P> page = page;
 
     public Page<T, P> Page => page;
     public P? Param => param;

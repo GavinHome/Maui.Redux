@@ -18,7 +18,6 @@ public partial class ToDoListPage
             new ToDoState(uniqueId: "0", title: "Hello World", desc: "Learn how to program.", isDone: true),
             new ToDoState(uniqueId: "1", title: "Hello Maui", desc: "Learn how to build an Maui app.", isDone: true),
             new ToDoState(uniqueId: "2", title: "Hello Maui Redux", desc: "Learn how to use Maui Redux in an Maui app."),
-            new ToDoState(uniqueId: "3", title: "Hello .NET Maui Redux", desc: "Learn how to use .NET Maui Redux in an Maui app."),
         ];
 
         ctx.Dispatch(new Action("initToDos", payload: initToDos));

@@ -83,11 +83,11 @@ public abstract class State<T> where T : StatefulWidget
 
     protected virtual void dispose() { }
 
-    public void setState(VoidCallback fn)
-    {
-        object? _ = fn();
-        ////_element!.markNeedsBuild();
-    }
+    ////public void setState(VoidCallback fn)
+    ////{
+    ////    object? _ = fn();
+    ////    ////_element!.markNeedsBuild();
+    ////}
 }
 
 /// Log
@@ -95,7 +95,7 @@ static class Log
 {
     public static void doPrint(object message)
     {
-        Action<Object> print = obj => Console.WriteLine($"[MauiRedux]: {obj}");
+        Action<Object> print = obj => System.Diagnostics.Trace.WriteLine($"[MauiRedux]: {obj}");
         if (Aop.isDebug())
         {
             print(message);
@@ -217,7 +217,7 @@ static class LifecycleCreator
 
     public static Action dispose() => new(Lifecycle.dispose);
 
-    // static Action didDisposed() => const Action(Lifecycle.didDisposed);
+    //// static Action didDisposed() => const Action(Lifecycle.didDisposed);
 
     public static Action didUpdateWidget() => new(Lifecycle.didUpdateWidget);
 
