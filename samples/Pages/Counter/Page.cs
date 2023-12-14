@@ -58,7 +58,10 @@ public partial class CounterPage() : Page<CounterState, Dictionary<string, dynam
             var toDosButton = new Button()
             {
                 Text = "ToDos",
-                Command = ReactiveUI.ReactiveCommand.Create(() => AppShell.Current?.GoToAsync("//todo_list")),
+                Command = ReactiveUI.ReactiveCommand.Create(async () =>
+                {
+                    await Navigator.of().push<dynamic>("todo_list", arguments: null);
+                }),
                 HorizontalOptions = LayoutOptions.Fill
             };
             toDosButton.SetValue(SemanticProperties.HintProperty, "Go to ToDosPage");

@@ -11,8 +11,6 @@ namespace samples
 
             ////MainPage = new AppShell();
 
-            ////AppShell.Current?.GoToAsync("//count");
-
             Navigator.onGenerateRoute = settings => Routes.Current.buildPage(settings.name, settings.arguments);
             Navigator.onRouteChanged = route => MainPage = route!.Content;
             Routes.Current.buildHome();
