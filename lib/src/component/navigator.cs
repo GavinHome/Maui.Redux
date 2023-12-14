@@ -44,13 +44,6 @@ public class NavigatorState : State<StatefulWidget>
         throw new NotImplementedException();
     }
 
-    //public async Task<Route<dynamic>> pushNamed<T>(string routeName, dynamic? arguments, Action<T>? call = null) where T : class
-    //{
-    //    Route<dynamic> route = _routeNamed<dynamic>(routeName: routeName, arguments: arguments);
-    //    route.Func = (x) => call?.Invoke((T)Convert.ChangeType(x, typeof(T)));
-    //    return await push(route);
-    //}
-
     public async Task<Route<dynamic>> push<T>(string routeName, dynamic? arguments = null, Action<T?>? call = null) where T : class
     {
         Action<dynamic?> func = (x) => call?.Invoke((T?)Convert.ChangeType(x, typeof(T)));
@@ -73,13 +66,6 @@ public class NavigatorState : State<StatefulWidget>
         Navigator.onRouteChanged?.Invoke(_current.Route);
         return Task.Run(() => _current.Route);
     }
-
-    ////Route<T> _routeNamed<T>(string routeName, dynamic? arguments) where T : class
-    ////{
-    ////    var content = Navigator.onGenerateRoute?.Invoke(new RouteSettings(routeName, arguments));
-    ////    Route<T> route = new(new RouteSettings(routeName, arguments), content);
-    ////    return route;
-    ////}
 
     Route<T> _routeNamed<T>(string routeName, dynamic? arguments = null, Action<dynamic?>? func = null) where T : class
     {
