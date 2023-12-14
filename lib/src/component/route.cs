@@ -3,27 +3,31 @@
 /// Define a basic behavior of routes.
 public interface AbstractRoutes
 {
-    Widget home { get; }
-
-    Widget buildPage(string? path, dynamic? arguments = null);
+    public Widget buildPage(string? path, dynamic? arguments = null);
+    public void buildHome(dynamic? arguments = null);
 }
 
 /// Each page has a unique store.
-public class PageRoutes(Map? pages, string? initialRoute = null) : AbstractRoutes
+public class PageRoutes : AbstractRoutes
 {
-    readonly Map pages = pages ?? [];
-    readonly string? initialRoute = initialRoute;
+    readonly Map pages;
+    readonly string? initialRoute;
 
-    string? initialRoutePath => initialRoute ?? pages.Keys.FirstOrDefault();
+    public PageRoutes(Map? pages, string? initialRoute = null)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(nameof(pages));
+        this.pages = pages ?? [];
+        this.initialRoute = initialRoute;
+    }
 
-    public Widget home => buildHome(initialRoutePath);
+    string? initialRoutePath =>
+          initialRoute ?? pages.Keys.FirstOrDefault();
 
     public Widget buildPage(string? path, dynamic? arguments = null) => pages[path!].buildPage(arguments);
 
-    private Widget buildHome(string? path, dynamic? arguments = null)
+    public void buildHome(dynamic? arguments = null)
     {
-        var content = pages[path!].buildPage(arguments);
-        Navigator.of().push(new Route<dynamic>(new RouteSettings(path, arguments), content));
-        return content;
+        var path = initialRoutePath!;
+        Navigator.of().push<dynamic>(path, arguments);
     }
 }

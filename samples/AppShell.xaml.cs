@@ -13,50 +13,47 @@ namespace samples
         {
             InitializeComponent();
 
-            Items.Clear();
+            ////Items.Clear();
 
-            ShellContent counterPage = new()
-            {
-                Title = "Counter",
-                Route = "count",
-                Content = Routes.Current.buildPage("count", new Dictionary<string, dynamic> { { "title", "Counter" } }),
-            };
-            Items.Add(counterPage);
+            ////ShellContent counterPage = new()
+            ////{
+            ////    Title = "Counter",
+            ////    Route = "count",
+            ////    Content = Routes.Current.buildPage("count", new Dictionary<string, dynamic> { { "title", "Counter" } }),
+            ////};
+            ////Items.Add(counterPage);
 
-            ShellContent toDoListPage = new()
-            {
-                Title = "ToDos",
-                Route = "todo_list",
-                //Content = Routes.Current.buildPage("todo_list", new Dictionary<string, dynamic> { { "title", "ToDoListPage" } })
-                Content = Routes.Current.home,
-            };
-            Items.Add(toDoListPage);
+            ////ShellContent toDoListPage = new()
+            ////{
+            ////    Title = "ToDos",
+            ////    Route = "todo_list",
+            ////    //Content = Routes.Current.buildPage("todo_list", new Dictionary<string, dynamic> { { "title", "ToDoList" } })
+            ////    Content = Routes.Current.home,
+            ////};
+            ////Items.Add(toDoListPage);
 
-            //// Dynamic content for ToDoEditPage
-            ShellContent toDoEditPage = new()
-            {
-                Title = "ToDoEdit",
-                Route = "todo_edit",
-                ////Content = Routes.Current.buildPage("todo_edit")
-            };
-            Items.Add(toDoEditPage);
+            ////// Dynamic content for ToDoEditPage
+            ////ShellContent toDoEditPage = new()
+            ////{
+            ////    Title = "ToDoEdit",
+            ////    Route = "todo_edit",
+            ////    //Content = Routes.Current.buildPage("todo_edit")
+            ////};
+            ////Items.Add(toDoEditPage);
 
-            Navigator.onGenerateRoute = (RouteSettings settings) =>
-            {
-                var page = Routes.Current.buildPage(settings.name, settings.arguments);
-                return page;
-            };
+            ////Navigator.onGenerateRoute = settings => Routes.Current.buildPage(settings.name, settings.arguments);
 
-            Navigator.onChange += (RouteSettings settings) =>
-            {
-                //// If current route is todo edit, and set content
-                if(settings.name == "todo_edit")
-                {
-                    toDoEditPage.Content = Navigator.of().current;
-                }
+            ////Navigator.onRouteChanged = route =>
+            ////{
+            ////    //// If current route is todo edit, and set content
+            ////    if(route?.settings.name == "todo_edit")
+            ////    {
+            ////        //toDoEditPage.Content = route!.Content;
+            ////    }
 
-                AppShell.Current?.GoToAsync("//" + settings.name);
-            };
+            ////    AppShell.Current?.GoToAsync("//" + route?.settings.name);
+            ////    return new object();
+            ////};
         }
     }
 }

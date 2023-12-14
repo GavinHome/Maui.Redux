@@ -30,7 +30,7 @@ public partial class ToDoListPage() : Page<PageState, Dictionary<string, dynamic
             var report = ctx.buildComponent("report");
             return new ContentPage()
             {
-                Title = state.Title,
+                Title = state.Title ?? "ToDoList",
                 Content = new FlexLayout()
                 {
                     Direction = Microsoft.Maui.Layouts.FlexDirection.Column,
@@ -93,7 +93,7 @@ public partial class ToDoListPage() : Page<PageState, Dictionary<string, dynamic
 
     private static FlexLayout buildItemsView(ObservableCollection<Todo.ToDoState> obs, ComponentContext<PageState> ctx)
     {
-        var layout = new VerticalStackLayout() { Spacing = 25 }.Padding(new Thickness(10, 0, 10, 100));
+        var layout = new VerticalStackLayout() { Spacing = 25 }.Padding(new Thickness(10, 10, 10, 100));
         var content = new FlexLayout().Grow(1f);
         content.Children.Add(new ScrollView() { Content = layout });
 
