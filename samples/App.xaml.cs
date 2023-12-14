@@ -11,9 +11,16 @@ namespace samples
 
             ////MainPage = new AppShell();
 
-            Navigator.onGenerateRoute = settings => Routes.Current.buildPage(settings.name, settings.arguments);
-            Navigator.onRouteChanged = route => MainPage = route!.Content;
-            Routes.Current.buildHome();
+            Navigator.build(
+                routes: Routes.routes,
+                routeChanged: route => MainPage = route!.Content
+            );
+
+            //Navigator.build(
+            //    routes: Routes.routes,
+            //    routeChanged: route => MainPage = route!.Content,
+            //    generateRoute: settings => Routes.routes.buildPage(settings.name, settings.arguments)
+            //);
         }
     }
 }

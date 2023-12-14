@@ -6,7 +6,7 @@ namespace samples;
 
 public static class Routes
 {
-    public static readonly AbstractRoutes Current = new PageRoutes(
+    public static readonly AbstractRoutes routes = new PageRoutes(
         initialRoute: "count",
         pages: new Dictionary<String, dynamic>
         {
