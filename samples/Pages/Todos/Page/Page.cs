@@ -102,6 +102,7 @@ public partial class ToDoListPage() : Page<PageState, Dictionary<string, dynamic
             Application.Current?.Dispatcher.Dispatch(() =>
             {
                 var todos = ctx.buildComponents();
+                /// TODO: [Will update this for a solution of better performance in the future]
                 layout.Children.Clear();
                 layout.Children.AddRange(todos);
             });
