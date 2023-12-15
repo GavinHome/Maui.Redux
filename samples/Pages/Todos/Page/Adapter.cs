@@ -1,7 +1,5 @@
-﻿using System.Linq;
-using samples.Pages.Todos.Report;
+﻿using samples.Pages.Todos.Report;
 using samples.Pages.Todos.Todo;
-
 namespace samples.Pages.Todos.Page;
 
 internal class PageAdapter() : BasicAdapter<PageState>(builder: dependentBuilder)

@@ -1,9 +1,4 @@
-﻿using ReactiveUI;
-using ReactiveUI.Fody.Helpers;
-using samples.Pages.Todos.Todo;
-using System.Collections.ObjectModel;
-using System.Linq;
-
+﻿using samples.Pages.Todos.Todo;
 namespace samples.Pages.Todos.Page;
 
 public class PageState : ReactiveObject

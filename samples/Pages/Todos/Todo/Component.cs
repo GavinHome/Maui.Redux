@@ -1,6 +1,4 @@
 ﻿namespace samples.Pages.Todos.Todo;
-
-using ReactiveUI;
 using Action = Redux.Action;
 
 internal partial class TodoComponent() : Component<ToDoState>(

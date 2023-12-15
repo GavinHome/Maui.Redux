@@ -1,7 +1,4 @@
-﻿using ReactiveUI;
-using ReactiveUI.Fody.Helpers;
-
-namespace samples.Pages.Todos.Report;
+﻿namespace samples.Pages.Todos.Report;
 
 internal class ReportState(int total, int done) : ReactiveObject
 {

@@ -1,5 +1,3 @@
-using System.Windows.Input;
-
 namespace samples.Pages.Todos.Edit;
 
 public partial class View : ContentPage

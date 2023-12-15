@@ -1,4 +1,5 @@
 ﻿namespace samples.Pages.Todos.Todo;
+using Action = Redux.Action;
 
 internal partial class TodoComponent
 {
@@ -12,7 +13,7 @@ internal partial class TodoComponent
         }
     });
 
-    private static async Task _onEdit(Redux.Action action, ComponentContext<ToDoState> ctx)
+    private static async Task _onEdit(Action action, ComponentContext<ToDoState> ctx)
     {
         if (action.Payload == ctx.state.UniqueId)
         {
@@ -29,7 +30,7 @@ internal partial class TodoComponent
         await Task.CompletedTask;
     }
 
-    private static async Task _onRemove(Redux.Action action, ComponentContext<ToDoState> ctx)
+    private static async Task _onRemove(Action action, ComponentContext<ToDoState> ctx)
     {
         if (action.Payload == ctx.state.UniqueId)
         {

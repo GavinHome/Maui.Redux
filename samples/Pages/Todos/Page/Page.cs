@@ -1,11 +1,6 @@
-﻿using DynamicData;
-using DynamicData.Binding;
-using Microsoft.Maui.Controls.Shapes;
-using ReactiveUI;
-using samples.Pages.Todos.Report;
-using System.Collections.ObjectModel;
-namespace samples.Pages.Todos.Page;
+﻿using samples.Pages.Todos.Report;
 
+namespace samples.Pages.Todos.Page;
 using Action = Redux.Action;
 
 public partial class ToDoListPage() : Page<PageState, Dictionary<string, dynamic>>(

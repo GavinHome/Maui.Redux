@@ -1,6 +1,5 @@
-﻿namespace samples.Pages.Todos.Edit;
-using ReactiveUI;
-using samples.Pages.Todos.Todo;
+﻿using samples.Pages.Todos.Todo;
+namespace samples.Pages.Todos.Edit;
 
 public partial class TodoEditPage() : Page<TodoEditState, ToDoState>(
         initState: initState,
