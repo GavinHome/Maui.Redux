@@ -12,10 +12,11 @@
     
     <VerticalStackLayout>
         <FlyoutBase.ContextFlyout>
-            <MenuFlyout>
+            <MenuFlyout>                
                 <MenuFlyoutItem Text="Remove" Command="{Binding Path=OnRemoveCommand, Source={RelativeSource AncestorType={x:Type ContentView}, AncestorLevel=1}}">
                     <MenuFlyoutItem.IconImageSource>
                         <FontImageSource Glyph="&#x1F5D9;" Color="Red" />
+                        <!--<FileImageSource File="delete.png" />-->
                     </MenuFlyoutItem.IconImageSource>
                 </MenuFlyoutItem>
             </MenuFlyout>
