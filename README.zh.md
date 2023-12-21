@@ -1,6 +1,6 @@
 # Maui.Redux
 
-Maui Redux 是一个基于 MVU 模式的 Redux 状态管理的组装式跨平台应用程序框架，使用 C# 和 MauiUI 实现。 它允许您使用基于 Redux 的状态管理框架来管理应用程序状态和逻辑。MVU是单向数据流，如下图所示：
+Maui Redux 是一个基于 MVU 模式的 Redux 状态管理的组装式跨平台应用程序框架，使用 C# 和 Maui 实现。 它允许您使用基于 Redux 的状态管理框架来管理应用程序状态和逻辑。MVU是单向数据流，如下图所示：
 
 <p><img src="./assets/mvu.png" alt="redux-data-flow"></p>
 
