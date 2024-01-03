@@ -68,7 +68,7 @@ There are five steps to use the counter as an example:
 > 4. Create Reducer that modifies state
 > 5. Create Page or Component
  
-<p><img src="./assets/counter-code-segment.png" alt="counter-code-segment"></p>
+<p><img src="./assets/code-segment.png" alt="counter-code-segment"></p>
 
 <!--
 ```cs
