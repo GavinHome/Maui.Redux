@@ -69,6 +69,9 @@ Maui Redux框架主要包含以下几个部分：
 > 4. 创建修改状态的 Reducer
 > 5. 创建组件或页面视图以显示
 
+<p><img src="./assets/counter-code-segment.png" alt="counter-code-segment"></p>
+
+<!--
 ```cs
 using Redux;
 using Redux.Component;
@@ -224,6 +227,7 @@ public partial class CounterPage() : Page<CounterState, Dictionary<string, dynam
     private static CounterState initState(Dictionary<string, dynamic>? param) => new() { Count = 99 };
 }
 ```
+-->
 
 ## 示例
 
@@ -236,7 +240,7 @@ cd Maui.Redux
 
 这个示例是将一个大的Page划分为不同的子组件（Component)，最后在Page中拼装为一个完整的应用，如下图所示各部件组成结构示意图：
 
-<p><img src="./assets/todo-list-page-example-v2.png" alt="Maui-redux-framework"></p>
+<p><img src="./assets/todo-list-page-example-v2.png" alt="todo-list-page-example"></p>
 
 你也可以查看 [Example] 文件夹中的源代码，了解示例的具体实现细节。
 

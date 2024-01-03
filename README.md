@@ -67,7 +67,10 @@ There are five steps to use the counter as an example:
 > 3. Define Action and ActionCreator
 > 4. Create Reducer that modifies state
 > 5. Create Page or Component
+ 
+<p><img src="./assets/counter-code-segment.png" alt="counter-code-segment"></p>
 
+<!--
 ```cs
 using Redux;
 using Redux.Component;
@@ -138,7 +141,6 @@ public partial class CounterPage
 }
 
 /// [Page]
-
 public partial class CounterPage() : Page<CounterState, Dictionary<string, dynamic>>(
     initState: initState,
     effect: buildEffect(),
@@ -228,7 +230,7 @@ public partial class CounterPage() : Page<CounterState, Dictionary<string, dynam
 }
 
 ```
-
+-->
 
 ## Example
 
@@ -241,6 +243,6 @@ cd Maui.Redux
 
 This example is to divide a large Page into different sub-components (Components), and finally assemble it into a complete application in the Page, as shown below:
 
-<p><img src="./assets/todo-list-page-example-v2.png" alt="Maui-redux-framework"></p>
+<p><img src="./assets/todo-list-page-example-v2.png" alt="todo-list-page-example"></p>
 
 You can also check the source code in the [Example] folder to understand the implementation details of the example.

@@ -3,7 +3,8 @@ using Action = Redux.Action;
 
 public partial class CounterPage
 {
-    private static Effect<CounterState>? buildEffect() => EffectConverter.CombineEffects(new Dictionary<object, SubEffect<CounterState>>
+    private static Effect<CounterState>? buildEffect() => 
+        EffectConverter.CombineEffects(new Dictionary<object, SubEffect<CounterState>>
     {
         {
             CounterAction.onAdd, _onAdd

@@ -6,7 +6,8 @@ public partial class CounterPage() : Page<CounterState, Dictionary<string, dynam
     reducer: buildReducer(),
     middlewares:
     [
-        Redux.Middlewares.logMiddleware<CounterState>(monitor: (state) => state.ToString(), tag: "CounterPage")
+        Redux.Middlewares.logMiddleware<CounterState>(
+            monitor: (state) => state.ToString(), tag: "CounterPage")
     ],
     view: (state, dispatch, _) =>
     {
@@ -16,7 +17,8 @@ public partial class CounterPage() : Page<CounterState, Dictionary<string, dynam
             HeightRequest = 185,
             Aspect = Aspect.AspectFit
         };
-        image.SetValue(SemanticProperties.DescriptionProperty, "dot net bot in a race car number eight");
+        image.SetValue(SemanticProperties.DescriptionProperty,
+            "dot net bot in a race car number eight");
 
         var headline = new Label()
         {
@@ -33,7 +35,8 @@ public partial class CounterPage() : Page<CounterState, Dictionary<string, dynam
             Text = "Welcome to \r\n .NET Multi-platform App UI",
         };
         subHeadline.SetValue(SemanticProperties.HeadingLevelProperty, SemanticHeadingLevel.Level2);
-        subHeadline.SetValue(SemanticProperties.DescriptionProperty, "Welcome to dot net Multi platform App UI");
+        subHeadline.SetValue(SemanticProperties.DescriptionProperty,
+            "Welcome to dot net Multi platform App UI");
         if (App.Current!.Resources.TryGetValue("Headline", out object SubHeadlineStyle))
         {
             subHeadline.Style = SubHeadlineStyle as Style;
@@ -45,13 +48,15 @@ public partial class CounterPage() : Page<CounterState, Dictionary<string, dynam
             Command = ReactiveUI.ReactiveCommand.Create(() => dispatch(CounterActionCreator.onAddAction())),
             HorizontalOptions = LayoutOptions.Fill
         };
-        clickButton.SetValue(SemanticProperties.HintProperty, "Counts the number of times you click");
+        clickButton.SetValue(SemanticProperties.HintProperty,
+            "Counts the number of times you click");
         clickButton.SetBinding(
             Button.TextProperty,
             new Binding(
                 path: nameof(state.Count),
                 source: state,
-                converter: new FuncConverter<int, string>(count => count == 0 ? "Click me" : ($"Clicked {count} time" + (count > 1 ? "s" : string.Empty)))
+                converter: new FuncConverter<int, string>(count =>
+                count == 0 ? "Click me" : ($"Clicked {count} time" + (count > 1 ? "s" : string.Empty)))
             )
         );
 
@@ -84,5 +89,10 @@ public partial class CounterPage() : Page<CounterState, Dictionary<string, dynam
         };
     })
 {
-    private static CounterState initState(Dictionary<string, dynamic>? param) => new() { Count = param?.GetValueOrDefault("count") ?? 0, Title = param?.GetValueOrDefault("title") ?? string.Empty };
+    private static CounterState initState(Dictionary<string, dynamic>? param) =>
+        new()
+        {
+            Count = param?.GetValueOrDefault("count") ?? 0,
+            Title = param?.GetValueOrDefault("title") ?? string.Empty
+        };
 }
